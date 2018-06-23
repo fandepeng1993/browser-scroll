@@ -3,7 +3,7 @@
     <scroll class="scroll2" ref="scroll2">
       <div>
         <ul style="height: 3000px">
-          <li v-for="n in 100" style="height: 30px" v-text="n.toString()"></li>
+          <li v-for="n in 100" style="height: 30px" v-text="n.toString()" @click.prevent.stop="test2page(n)"></li>
         </ul>
       </div>
     </scroll>
@@ -20,6 +20,11 @@
     },
     activated(){
       this.$refs.scroll2.refresh()
+    },
+    methods:{
+      test2page(n){
+        this.$router.push({path:`/test2out/${n}`})
+      }
     },
     components:{
       Scroll

@@ -5,8 +5,12 @@
       <router-link to="/test2" tag="div">test2</router-link>
     </div>
     <keep-alive>
-      <router-view></router-view>
+      <router-view v-if="!$route.meta.notisKeep"></router-view>
     </keep-alive>
+    <router-view v-if="$route.meta.notisKeep"></router-view>
+
+
+
   </div>
 </template>
 

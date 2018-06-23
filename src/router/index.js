@@ -3,6 +3,8 @@ import Router from 'vue-router'
 
 import test1 from '@/components/test1'
 import test2 from '@/components/test2'
+import test1in from '@/components/test1in'
+import test2out from '@/components/test2out'
 Vue.use(Router)
 
 export default new Router({
@@ -13,18 +15,26 @@ export default new Router({
     },
     {
       path:'/test1',
-      component:test1
+      component:test1,
+      children:[
+        {
+          path:':id',
+          component:test1in
+        }
+
+      ]
     },
     {
       path:'/test2',
       component:test2
+    },
+    {
+      path:'/test2out/:id',
+      component:test2out,
+      meta:{
+        notisKeep:true
+      }
     }
-  ],
-  scrollBehavior (to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    } else {
-      return { x: 0, y: 0 }
-    }
-  }
+
+  ]
 })
